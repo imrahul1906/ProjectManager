@@ -33,4 +33,4 @@ ProjectInfo.java
     - A class that contains all the information related to Project.
 
 ProjectDatabaseModel.java
-    - A class that is used a bundle when DB operations are done.
+    - A class that is used as a bundle when DB operations are done.

@@ -5,6 +5,9 @@ import src.common.ProjectManagerUtil;
 
 import java.util.List;
 
+/**
+ * A class to handle all the information regarding a project
+ */
 public class ProjectInfo {
     private String mProjectLead;
     private String mProjectName;

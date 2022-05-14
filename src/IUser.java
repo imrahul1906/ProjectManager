@@ -2,6 +2,8 @@ package src;
 
 import src.common.ProjectErrorHandler;
 
+import java.util.List;
+
 public interface IUser {
 
     /**
@@ -28,7 +30,7 @@ public interface IUser {
      * @return for Manager, it will return all the tasks.
      * for TeamMember, It will return the task of the said member.
      */
-    boolean getProjectTask();
+    List<TaskDataBaseModel> getProjectTask();
 
     /**
      * The method to create task.

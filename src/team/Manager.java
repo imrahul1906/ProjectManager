@@ -1,5 +1,11 @@
 package src.team;
 
+import src.ITaskController;
+import src.TaskDataBaseModel;
+import src.task.TaskController;
+
+import java.util.List;
+
 /**
  * A class to handle the functionality when user type is manager.
  */
@@ -22,8 +28,8 @@ public class Manager extends User {
     }
 
     @Override
-    public boolean getProjectTask() {
+    public List<TaskDataBaseModel> getProjectTask() {
         // Return all the task present.
-        return false;
+        return TaskController.getInstance().getAllTasks();
     }
 }

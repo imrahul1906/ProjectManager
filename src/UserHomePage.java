@@ -3,6 +3,9 @@ package src;
 import src.common.ProjectErrorHandler;
 import src.common.ProjectManagerUtil;
 
+import java.util.Date;
+import java.util.List;
+
 /**
  * Class to handle all home page operation of Project manager Tool.
  */
@@ -26,6 +29,18 @@ public class UserHomePage {
             mUser = ProjectManagerFactory.createUser(mUserType, mEmpID);
         } catch (ProjectErrorHandler.InvalidUserException e) {
             // print crash stack or customized message based in the requirement.
+        }
+    }
+
+    /**
+     * Method to initialize the task list.
+     */
+    private void initTaskList() {
+        List<TaskDataBaseModel> taskList = mUser.getProjectTask();
+        for (TaskDataBaseModel model : taskList) {
+            Date expiredDate = model.getDeadLine();
+            String remainingTime = ProjectManagerUtil.getRemainingDaysBeforeDeadLine(expiredDate);
+            // this remaining time can be used to notify the user about the time constraint.
         }
     }
 

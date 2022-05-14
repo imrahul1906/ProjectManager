@@ -1,6 +1,10 @@
 package src.team;
 
+import src.TaskDataBaseModel;
 import src.common.ProjectErrorHandler;
+import src.task.TaskController;
+
+import java.util.List;
 
 /**
  * A class to handle the functionality when user is anyone but manager.
@@ -22,8 +26,8 @@ public class TeamMember extends User {
     }
 
     @Override
-    public boolean getProjectTask() {
+    public List<TaskDataBaseModel> getProjectTask() {
         // A request to the database will be made to get the task of the user.
-        return false;
+        return TaskController.getInstance().getTaskByEmployeeID(mEmployeeID);
     }
 }

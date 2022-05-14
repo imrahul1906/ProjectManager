@@ -2,6 +2,7 @@ package src.team;
 
 import src.IUser;
 import src.common.ProjectManagerUtil;
+import src.task.TaskCreateView;
 
 /**
  * Class to handle the common functionalities of all User types.
@@ -9,6 +10,7 @@ import src.common.ProjectManagerUtil;
 abstract class User implements IUser {
     String mEmployeeID;
     String mEmployeeName;
+    private TaskCreateView mTaskCreator;
 
     User(String empID) {
         mEmployeeID = empID;
