@@ -1,5 +1,8 @@
 package src.common;
 
+import src.exception.InvalidNameException;
+import src.exception.InvalidUserException;
+
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -18,11 +21,10 @@ public class ProjectManagerUtil {
      *
      * @param projectName Name that needs to be checked.
      * @return true is the name is valid .
-     * @throws ProjectErrorHandler.InvalidNameException
+     * @throws InvalidNameException
      */
-    public static boolean isValidName(String projectName) throws ProjectErrorHandler.InvalidNameException {
-        if (projectName == null)
-            throw new ProjectErrorHandler.InvalidNameException("The name can not be null or empty");
+    public static boolean isValidName(String projectName) throws InvalidNameException {
+        if (projectName == null) throw new InvalidNameException("The name can not be null or empty");
         return true;
     }
 
@@ -39,10 +41,10 @@ public class ProjectManagerUtil {
      * @param empID       ID that is used to know the user type.
      * @param projectName used to validate the user if one belongs to the project or not.
      * @return User type .
-     * @throws ProjectErrorHandler.InvalidUserException
+     * @throws InvalidUserException
      */
-    public static UserType getUserType(String empID, String projectName) throws ProjectErrorHandler.InvalidUserException {
-        if (!isValidUser(projectName, empID)) throw new ProjectErrorHandler.InvalidUserException("Invalid user");
+    public static UserType getUserType(String empID, String projectName) throws InvalidUserException {
+        if (!isValidUser(projectName, empID)) throw new InvalidUserException("Invalid user");
 
         if (isManager(empID)) return UserType.MANAGER;
         return UserType.TEAM_MEMBER;
@@ -53,9 +55,9 @@ public class ProjectManagerUtil {
      *
      * @param empID ID that is used to identify the user type.
      * @return true if the user is Manager.
-     * @throws ProjectErrorHandler.InvalidUserException
+     * @throws InvalidUserException
      */
-    public static boolean isManager(String empID) throws ProjectErrorHandler.InvalidUserException {
+    public static boolean isManager(String empID) throws InvalidUserException {
         // There will exist an exposed api to know if the  given employee id is manager or not.
         return false;
     }

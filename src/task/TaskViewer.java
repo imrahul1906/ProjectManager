@@ -1,7 +1,7 @@
 package src.task;
 
-import src.common.ProjectErrorHandler;
 import src.TaskDataBaseModel;
+import src.exception.InvalidStatusException;
 
 /**
  * A class to handle functionalities when a particular task is opened.
@@ -21,7 +21,7 @@ public class TaskViewer {
             if (canChangeStatus(taskStatus)) {
                 TaskController.getInstance().updateTaskStatus(mDataBaseModel.getTaskID(), taskStatus);
             }
-        } catch (ProjectErrorHandler.InvalidStatusException e) {
+        } catch (InvalidStatusException e) {
             // print crash stack or customized message based in the requirement.
             return false;
         }
@@ -33,7 +33,7 @@ public class TaskViewer {
      *
      * @return true if all its subtask are completed else false.
      */
-    private boolean canChangeStatus(int taskStatus) throws ProjectErrorHandler.InvalidStatusException {
+    private boolean canChangeStatus(int taskStatus) throws InvalidStatusException {
         String[] subTasks = mDataBaseModel.getSubTasks();
         // If All the subtasks has the same status , then only the status can be changed.
         // if subtasks are not WIP then parent task can not be WIP
@@ -41,7 +41,7 @@ public class TaskViewer {
         for (String task : subTasks) {
             int status = TaskController.getInstance().getTaskStatus(task);
             if (status != taskStatus)
-                throw new ProjectErrorHandler.InvalidStatusException(
+                throw new InvalidStatusException(
                         "The subtask/subtasks's status is different. So status can not be changed.");
         }
         return true;

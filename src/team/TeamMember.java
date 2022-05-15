@@ -1,7 +1,7 @@
 package src.team;
 
 import src.TaskDataBaseModel;
-import src.common.ProjectErrorHandler;
+import src.exception.InvalidAccessException;
 import src.task.TaskController;
 
 import java.util.List;
@@ -16,13 +16,13 @@ public class TeamMember extends User {
     }
 
     @Override
-    public boolean addTeamMember(String empID, String mProjectName) throws ProjectErrorHandler.InvalidAccessException {
-        throw new ProjectErrorHandler.InvalidAccessException("This user can not add team members");
+    public boolean addTeamMember(String empID, String mProjectName) throws InvalidAccessException {
+        throw new InvalidAccessException("This user can not add team members");
     }
 
     @Override
-    public boolean removeTeamMember(String empID) throws ProjectErrorHandler.InvalidAccessException {
-        throw new ProjectErrorHandler.InvalidAccessException("This user can not add team members");
+    public boolean removeTeamMember(String empID) throws InvalidAccessException {
+        throw new InvalidAccessException("This user can not add team members");
     }
 
     @Override

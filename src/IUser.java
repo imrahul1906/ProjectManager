@@ -1,6 +1,6 @@
 package src;
 
-import src.common.ProjectErrorHandler;
+import src.exception.InvalidAccessException;
 
 import java.util.List;
 
@@ -13,7 +13,7 @@ public interface IUser {
      * @param mProjectName - Project name where member needs to be added.
      * @return true if successfully added in the database else false.
      */
-    boolean addTeamMember(String empId, String mProjectName) throws ProjectErrorHandler.InvalidAccessException;
+    boolean addTeamMember(String empId, String mProjectName) throws InvalidAccessException;
 
 
     /**
@@ -22,7 +22,7 @@ public interface IUser {
      * @param empId - ID of the employee who is to be removed.
      * @return true if successfully removed from the database else false.
      */
-    boolean removeTeamMember(String empId) throws ProjectErrorHandler.InvalidAccessException;
+    boolean removeTeamMember(String empId) throws InvalidAccessException;
 
     /**
      * The method will be used to get all the tasks.

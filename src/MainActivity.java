@@ -1,7 +1,7 @@
 package src;
 
-import src.common.ProjectErrorHandler;
 import src.common.ProjectManagerUtil;
+import src.exception.InvalidUserException;
 
 import java.util.List;
 
@@ -29,7 +29,7 @@ public class MainActivity {
             if (ProjectManagerUtil.isManager(mEmpID)) {
                 // Request to add in db.
             }
-        } catch (ProjectErrorHandler.InvalidUserException e) {
+        } catch (InvalidUserException e) {
         }
     }
 
@@ -43,7 +43,7 @@ public class MainActivity {
             if (ProjectManagerUtil.isManager(mEmpID)) {
                 // Request to remove from db.
             }
-        } catch (ProjectErrorHandler.InvalidUserException e) {
+        } catch (InvalidUserException e) {
 
         }
     }

@@ -1,7 +1,7 @@
 package src;
 
-import src.common.ProjectErrorHandler;
 import src.common.ProjectManagerUtil;
+import src.exception.InvalidNameException;
 
 import java.util.List;
 
@@ -21,7 +21,7 @@ public class ProjectInfo {
     public void setProjectName(String projectName) {
         try {
             if (ProjectManagerUtil.isValidName(projectName)) mProjectName = projectName;
-        } catch (ProjectErrorHandler.InvalidNameException e) {
+        } catch (InvalidNameException e) {
             // print crash stack or customized message based in the requirement.
         }
     }

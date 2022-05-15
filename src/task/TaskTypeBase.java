@@ -6,7 +6,7 @@ import src.ITaskTypeBase;
 /**
  * An abstract class to handle the functionalities of a task types.
  */
-abstract class TaskTypeBase implements ITaskTypeBase {
+public abstract class TaskTypeBase implements ITaskTypeBase {
 
     /**
      * Method to return the title of the attribute that are common for all the task types.

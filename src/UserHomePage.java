@@ -1,7 +1,8 @@
 package src;
 
-import src.common.ProjectErrorHandler;
 import src.common.ProjectManagerUtil;
+import src.exception.InvalidAccessException;
+import src.exception.InvalidUserException;
 
 import java.util.Date;
 import java.util.List;
@@ -27,7 +28,7 @@ public class UserHomePage {
         try {
             mUserType = ProjectManagerUtil.getUserType(mEmpID, mProjectName);
             mUser = ProjectManagerFactory.createUser(mUserType, mEmpID);
-        } catch (ProjectErrorHandler.InvalidUserException e) {
+        } catch (InvalidUserException e) {
             // print crash stack or customized message based in the requirement.
         }
     }
@@ -47,7 +48,7 @@ public class UserHomePage {
     private void addTeamMemberInProject(String empID) {
         try {
             mUser.addTeamMember(empID, mProjectName);
-        } catch (ProjectErrorHandler.InvalidAccessException e) {
+        } catch (InvalidAccessException e) {
             // print crash stack or customized message based in the requirement.
         }
     }
@@ -55,7 +56,7 @@ public class UserHomePage {
     private void removeTeamMemberFromProject(String empID) {
         try {
             mUser.removeTeamMember(empID);
-        } catch (ProjectErrorHandler.InvalidAccessException e) {
+        } catch (InvalidAccessException e) {
             // print crash stack or customized message based in the requirement.
         }
     }
